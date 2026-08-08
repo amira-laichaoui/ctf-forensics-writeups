@@ -42,14 +42,16 @@ In Virustotal, navigate to the Behavior tab and scroll down to the **Processes c
 
 ![Additional screenshot](images/Untitled%20design.png)
 
-The malware uses the legitimate Windows utility schtasks.exe to create a scheduled task with the **'/RL HIGHEST'** option indicationg execution with elevated priviledges. The task name is specified by the **'/tn'** parameter, which is set to **WmiPrvSE**.
+The malware uses the legitimate Windows utility `schtasks.exe` to create a scheduled task with the **'/RL HIGHEST'** option indicationg execution with elevated priviledges. The task name is specified by the **'/tn'** parameter, which is set to **WmiPrvSE**.
 
 **answer** : WmiPrvSE
 
 ### Q5. What is the filename of the malware binary that is dropped in the AppData directory?
 From the previous screenshot, we can observe that the malware creates a scheduled task that executes the binary located at:
 
+```text
 C:\Users\RDhJ0CNFevzX\AppData\Roaming\WmiPrvSE.exe
+```
 
 From this path, we can identify that the malware drops its executable into the AppData\Roaming directory with the filename WmiPrvSE.exe.
 
@@ -103,11 +105,13 @@ In Virustotal, navigate to the Behavior tab and scroll down to the Files dropped
 
 I analyzed the decompiled source code and searched for dll related API calls and references. At line 613, the malware explicitly checks for the presence of SbieDll.dll:
 
+```csharp
 result = ((...("SbieDll.dll").ToInt32() != 0) ? true : false);
+```
 
 ![dll](images/Screenshot%20from%202026-08-08%2018-02-29.png)
 
-SbieDll.dll is associated with the Sandboxie sandbox environment according to [the documentation](https://sandboxie-plus.com/sandboxie/injectdll/). This check allows the malware to detect whether it is executing inside Sandboxie and potentially alter its behavior to evade analysis.
+`SbieDll.dll` <span style="color:purple">SbieDll.dll</span> is associated with the Sandboxie sandbox environment according to [the documentation](https://sandboxie-plus.com/sandboxie/injectdll/). This check allows the malware to detect whether it is executing inside Sandboxie and potentially alter its behavior to evade analysis.
 
 **Answer:** SbieDll.dll
 
@@ -123,8 +127,10 @@ Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 
 It then accesses the ShowSuperHidden value and modifies it:
 
-registryKey.GetValue("ShowSuperHidden")
+```csharp
+registryKey.GetValue("ShowSuperHidden");
 registryKey.SetValue("ShowSuperHidden", 0);
+```
 
 This confirms that the malware manipulates the ShowSuperHidden registry value under the Windows Explorer Advanced settings.
 
