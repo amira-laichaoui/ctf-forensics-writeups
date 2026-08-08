@@ -95,6 +95,8 @@ The three addresses listed under Hosts correspond to the malware's C2 servers.
 
 In Virustotal, navigate to the Behavior tab and scroll down to the Files dropped section. We notice several files created by the malware with the extension **'lnk'**. 
 
+![Screenshot from 2026-08-08 21-35-28](<images/Screenshot from 2026-08-08 21-35-28.png>)
+
 **Answer:** lnk
 
 ### Q12. What is the name of the DLL the malware uses to detect if it is running in a sandbox environment?
