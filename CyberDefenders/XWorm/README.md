@@ -111,7 +111,7 @@ result = ((...("SbieDll.dll").ToInt32() != 0) ? true : false);
 
 ![dll](images/Screenshot%20from%202026-08-08%2018-02-29.png)
 
-`SbieDll.dll` <span style="color:purple">SbieDll.dll</span> is associated with the Sandboxie sandbox environment according to [the documentation](https://sandboxie-plus.com/sandboxie/injectdll/). This check allows the malware to detect whether it is executing inside Sandboxie and potentially alter its behavior to evade analysis.
+`SbieDll.dll` is associated with the Sandboxie sandbox environment according to [the documentation](https://sandboxie-plus.com/sandboxie/injectdll/). This check allows the malware to detect whether it is executing inside Sandboxie and potentially alter its behavior to evade analysis.
 
 **Answer:** SbieDll.dll
 
