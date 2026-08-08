@@ -12,7 +12,8 @@ The objective of the challenge was to investigate the malware's behavior, includ
 You can either just directly upload the file into an online malware scanner <span style="color:blue;">**(VirusTotal)**</span> . 
 
 Scroll through details section until you find: 
-![images/Sans titre 3_20260201182618](https://hackmd.io/_uploads/ryPVabT8Zx.png)
+![/images/Sans titre 3_20260201182618](https://hackmd.io/_uploads/ryPVabT8Zx.png)
+
 
 Otherwise, you can just work locally, using **pefile** a Python module that parses Windows Portable Executable (PE) files that lets you read headers, imports, sections, version info, and more without running the malware. We'll use to retrieve the compile timestamp (UTC) from the PE file metadata.
 ![images/Screenshot from 2025-12-11 17-28-22](https://hackmd.io/_uploads/ryRWZfaUZg.png)
